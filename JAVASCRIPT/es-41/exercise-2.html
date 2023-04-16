@@ -1,0 +1,32 @@
+<html>
+  <body>
+    <div id="container" style="display: flex; align-items: center;"></div>
+  </body>
+</html>
+
+<script>
+async function h2check() {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos/4');
+    const todo = await response.json();
+    const {title, completed} = todo;
+
+    const container = document.getElementById('container');
+
+    const titleElement = document.createElement('h2');
+    titleElement.textContent = title;
+
+    const checkboxElement = document.createElement('input');
+    checkboxElement.type = 'checkbox';
+    checkboxElement.checked = completed;
+
+    container.appendChild(titleElement);
+    container.appendChild(checkboxElement);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+h2check();
+
+</script>

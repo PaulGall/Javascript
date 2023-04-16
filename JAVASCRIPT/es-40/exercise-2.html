@@ -1,0 +1,29 @@
+<html>
+
+<body>
+  <div id="container" style="display: flex; align-items: center;"></div>
+</body>
+
+</html>
+
+<script>
+  const API_URL = "https://jsonplaceholder.typicode.com/todos";
+  const newEl = document.createElement("ul");
+  document.body.appendChild(newEl)
+  const titles = async () => {
+    try {
+      const response = await fetch(API_URL);
+      const result = await response.json();
+      console.log(result)
+
+      result.forEach(element =>  {
+        const li = document.createElement("li")
+          newEl.append(li)
+          li.append(element.title);
+      })
+    } catch (error) {
+      console.error();
+    }
+  }
+  titles();
+</script>
